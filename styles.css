@@ -210,6 +210,18 @@ body::after {
   }
 }
 
+@keyframes container-ambient {
+  0% {
+    transform: translate3d(-2%, -2%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 3%, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-1%, 4%, 0) scale(1.02);
+  }
+}
+
 .site-header {
   width: min(1240px, 92%);
   margin: 1rem auto 0;
@@ -335,6 +347,11 @@ body::after {
   overflow: hidden;
 }
 
+.hero-block > * {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-block:not(.compact) {
   grid-template-areas: "main side";
 }
@@ -358,6 +375,21 @@ body::after {
     transparent
   );
   animation: panel-sheen 12s ease-in-out infinite;
+}
+
+.hero-block::after {
+  content: "";
+  position: absolute;
+  inset: -42% -24%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.72;
+  filter: blur(18px);
+  background:
+    radial-gradient(circle at 14% 22%, rgba(203, 145, 82, 0.2), transparent 38%),
+    radial-gradient(circle at 82% 76%, rgba(255, 229, 190, 0.32), transparent 42%),
+    radial-gradient(circle at 48% 92%, rgba(165, 108, 52, 0.14), transparent 36%);
+  animation: container-ambient 18s ease-in-out infinite alternate;
 }
 
 .hero-block.compact {
@@ -533,6 +565,14 @@ body::after {
   font-family: "Fraunces", serif;
   font-size: 3rem;
   color: rgba(255, 248, 236, 0.95);
+}
+
+.hero-side-name {
+  margin: 0 0 0.32rem;
+  text-align: center;
+  font-family: "Fraunces", serif;
+  font-size: 1.1rem;
+  color: rgba(247, 239, 224, 0.95);
 }
 
 .hero-side-role {
