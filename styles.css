@@ -13,6 +13,8 @@
   --radius-xl: 30px;
   --radius-lg: 20px;
   --radius-md: 14px;
+  --font-body: "Avenir Next", "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
 }
 
 * {
@@ -32,7 +34,7 @@ img {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   position: relative;
   isolation: isolate;
@@ -407,7 +409,7 @@ body::after {
 
 .display-title {
   margin: 0;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 3.1vw, 3.5rem);
   line-height: 1.05;
   letter-spacing: 0.01em;
@@ -550,6 +552,12 @@ body::after {
   animation: ring-orbit 8.5s linear infinite;
 }
 
+.profile-visual picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .profile-visual img {
   width: 100%;
   height: 100%;
@@ -557,12 +565,12 @@ body::after {
   display: block;
 }
 
-.profile-visual span {
+.profile-visual .profile-fallback {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 3rem;
   color: rgba(255, 248, 236, 0.95);
 }
@@ -570,14 +578,14 @@ body::after {
 .hero-side-name {
   margin: 0 0 0.32rem;
   text-align: center;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   color: rgba(247, 239, 224, 0.95);
 }
 
 .hero-side-role {
   margin: 0;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 1.3rem;
 }
 
@@ -633,7 +641,7 @@ body::after {
 
 .section-title {
   margin: 0;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.1vw, 2.2rem);
 }
 
@@ -739,7 +747,7 @@ body::after {
 
 .info-card h3 {
   margin: 0;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 1.28rem;
 }
 
@@ -879,7 +887,7 @@ body::after {
 
 .exp-panel-head h3 {
   margin: 0;
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 1.2rem;
 }
 
@@ -1168,6 +1176,23 @@ body::after {
 @media (max-width: 720px) {
   body {
     font-size: 15px;
+    animation: none;
+    background-size: auto;
+  }
+
+  body::before,
+  body::after,
+  .ambient {
+    display: none;
+  }
+
+  .site-header::after,
+  .hero-block::before,
+  .hero-block::after,
+  .section-block::before,
+  .btn.primary::after,
+  .profile-visual::after {
+    animation: none;
   }
 
   .site-header {

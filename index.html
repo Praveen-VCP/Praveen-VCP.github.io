@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praveen V | Premium Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="image"
+      href="profile-640.webp"
+      imagesrcset="profile-320.webp 320w, profile-640.webp 640w"
+      imagesizes="(max-width: 560px) 190px, (max-width: 1040px) 220px, 220px"
+      type="image/webp"
     />
+    <link rel="preload" href="styles.css" as="style" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -66,13 +69,27 @@
 
         <aside class="hero-side">
           <div class="profile-visual">
-            <img
-              src="profile.jpg"
-              alt="Praveen V portrait"
-              onload="this.nextElementSibling.style.display='none'"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'"
-            />
-            <span aria-hidden="true">PV</span>
+            <picture>
+              <source
+                type="image/webp"
+                srcset="profile-320.webp 320w, profile-640.webp 640w"
+                sizes="(max-width: 560px) 190px, (max-width: 1040px) 220px, 220px"
+              />
+              <img
+                src="profile-640.jpg"
+                srcset="profile-320.jpg 320w, profile-640.jpg 640w"
+                sizes="(max-width: 560px) 190px, (max-width: 1040px) 220px, 220px"
+                width="640"
+                height="960"
+                alt="Praveen V portrait"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                onload="this.closest('.profile-visual').querySelector('.profile-fallback').style.display='none'"
+                onerror="this.style.display='none'; this.closest('.profile-visual').querySelector('.profile-fallback').style.display='grid'"
+              />
+            </picture>
+            <span class="profile-fallback" aria-hidden="true">PV</span>
           </div>
           <p class="hero-side-name">Praveen V</p>
           <p class="hero-side-role">Associate Software Engineer</p>
