@@ -13,8 +13,8 @@
   --radius-xl: 30px;
   --radius-lg: 20px;
   --radius-md: 14px;
-  --font-body: "Avenir Next", "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-body: "Outfit", sans-serif;
+  --font-display: "Fraunces", serif;
 }
 
 * {
